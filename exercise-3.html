@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise 3</title>
+    <style>
+      :root {
+        --header: #1e90ff;
+        --header-shadow: #0077ea;
+        --main: #3cb371;
+        --main-shadow: #2f8d59;
+        --item: #2f8d59;
+        --item-shadow: #226741;
+        --sidebar: #ff6347;
+        --sidebar-shadow: #e02200;
+        --footer: #4169e1;
+        --footer-shadow: #1d44b8;
+
+        --space: 1rem;
+        --radius: 0.5rem;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+        font-weight: bold;
+        color: white;
+      }
+
+      /* Level 1: header / content / footer stacked vertically */
+      .page {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space);
+        min-height: 100vh;
+        padding: var(--space);
+      }
+
+      header,
+      main,
+      .sidebar,
+      footer,
+      .item {
+        border-radius: var(--radius);
+      }
+
+      header,
+      footer {
+        display: flex;
+        align-items: center;
+        padding: 0 1.5rem;
+        height: 4.5rem;
+      }
+
+      header {
+        background-color: var(--header);
+        box-shadow: 0 0.25rem 0 var(--header-shadow);
+      }
+
+      footer {
+        background-color: var(--footer);
+        box-shadow: 0 0.25rem 0 var(--footer-shadow);
+      }
+
+      /* Level 2: main + sidebar side by side, grows vertically so main reaches the footer */
+      .content {
+        display: flex;
+        gap: var(--space);
+        flex-grow: 1;
+      }
+
+      /* main grows horizontally (flex-grow) and vertically (stretch) */
+      main {
+        flex-grow: 1;
+        background-color: var(--main);
+        box-shadow: 0 0.25rem 0 var(--main-shadow);
+        padding: 0.5rem 1.5rem 1.5rem;
+
+        display: flex;
+        flex-direction: column;
+      }
+
+      main h2 {
+        margin: 0 0 var(--space);
+        font-size: 1.1rem;
+        line-height: 2.5rem;
+      }
+
+      /* sidebar: fixed width, grows only vertically */
+      .sidebar {
+        width: 8rem;
+        padding: 1rem 1.5rem;
+        background-color: var(--sidebar);
+        box-shadow: 0 0.25rem 0 var(--sidebar-shadow);
+      }
+
+      /* Level 3: items wrap onto new lines */
+      .items {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space);
+      }
+
+      .item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 5rem;
+        height: 4.5rem;
+        background-color: var(--item);
+        box-shadow: 0 0.25rem 0 var(--item-shadow);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header>header</header>
+
+      <div class="content">
+        <main>
+          <h2>main</h2>
+          <div class="items">
+            <div class="item">item</div>
+            <div class="item">item</div>
+            <div class="item">item</div>
+            <div class="item">item</div>
+            <div class="item">item</div>
+            <div class="item">item</div>
+            <div class="item">item</div>
+            <div class="item">item</div>
+            <div class="item">item</div>
+            <div class="item">item</div>
+            <div class="item">item</div>
+          </div>
+        </main>
+
+        <aside class="sidebar">sidebar</aside>
+      </div>
+
+      <footer>footer</footer>
+    </div>
+  </body>
+</html>
